@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EQ-Wear | Clothing Brand</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+
+    /* Navigation Bar */
+    nav {
+        background-color: #111;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 30px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #f0c14b;
+    }
+    .nav-links {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+    .nav-links li {
+        position: relative;
+    }
+    .nav-links li a {
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: block;
+        transition: background 0.3s;
+    }
+    .nav-links li a:hover {
+        background-color: #f0c14b;
+        color: black;
+    }
+    /* Dropdown */
+    .dropdown {
+        display: none;
+        position: absolute;
+        background-color: #222;
+        min-width: 160px;
+    }
+    .dropdown a {
+        padding: 10px 15px;
+    }
+    .nav-links li:hover .dropdown {
+        display: block;
+    }
+
+    /* Hero Section */
+    .hero {
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                    url('https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg') center/cover no-repeat;
+        color: white;
+        animation: fadeIn 2s ease-in;
+    }
+    .hero h1 {
+        font-size: 50px;
+        margin-bottom: 15px;
+    }
+    .hero p {
+        font-size: 18px;
+    }
+
+    /* New Arrivals */
+    .new-arrivals {
+        padding: 40px;
+        text-align: center;
+    }
+    .new-arrivals h2 {
+        font-size: 36px;
+        color: #111;
+        margin-bottom: 30px;
+        animation: slideIn 1s ease-out;
+    }
+    .arrival-img {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: transform 0.5s;
+    }
+    .arrival-img:hover {
+        transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+        background-color: #111;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+    }
+    footer p {
+        margin: 5px 0;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+    @keyframes slideIn {
+        from {transform: translateY(-50px); opacity: 0;}
+        to {transform: translateY(0); opacity: 1;}
+    }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="logo">EQ</div>
+    <ul class="nav-links">
+        <li><a href="clothing.html">Home</a></li>
+        <li><a href="western.html">Western</a></li>
+
+            <div class="dropdown">
+                <a href="#">Dresses</a>
+                <a href="#">Jackets</a>
+            </div>
+        </li>
+        <li>
+            <a href="eastern.html">Eastern</a>
+            <div class="dropdown">
+                <a href="#">Shalwar Kameez</a>
+                <a href="#">Lehenga</a>
+            </div>
+        </li>
+        <li>
+            <a href="bottom.html">Bottoms</a>
+            <div class="dropdown">
+                <a href="#">Jeans</a>
+                <a href="#">Trousers</a>
+            </div>
+        </li>
+        <li>
+            <a href="tops.html">Tops</a>
+            <div class="dropdown">
+                <a href="#">Shirts</a>
+                <a href="#">Blouses</a>
+            </div>
+        </li>
+        <li>
+            <a href="accesories.html">Accessories</a>
+            <div class="dropdown">
+                <a href="#">Bags</a>
+                <a href="#">Jewelry</a>
+            </div>
+        </li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="cart.html">🛒 Cart</a></li>
+    </ul>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1>Welcome to EQ-Wear</h1>
+    <p>Your style, your statement</p>
+</div>
+
+<!-- New Arrivals -->
+<section class="new-arrivals">
+    <h2>New Arrivals</h2>
+    <img src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg" alt="New Arrival Dress" class="arrival-img">
+</section>
+
+<!-- Contact Us Section -->
+<section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+    <p id="responseMessage" class="hidden">Thank you for your response!</p>
+</section>
+
+<style>
+/* Contact Section Styling */
+.contact-section {
+    background-color: #f5f5f5;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-section form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-section input,
+.contact-section textarea {
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+.contact-section button {
+    padding: 12px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-section button:hover {
+    background-color: #555;
+}
+
+#responseMessage {
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: green;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+
+<script>
+// Contact Form Submit
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent real submission
+    document.getElementById('responseMessage').classList.remove('hidden');
+    document.getElementById('contactForm').reset();
+});
+</script>
+
+</div>
+<!-- Footer -->
+<footer>
+    <p>📍 EQ-Wear, GT Road Lahore</p>
+    <p>📞 000-111-222-333 | 📧 EQwear@gmail.com</p>
+    <p>Designed by Esha Qayyum</p>
+</footer>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event){
+    event.preventDefault();
+    alert("Thank you for your response!");
+    document.getElementById("contactForm").reset();
+});
+</script>
+</body>
+</html>

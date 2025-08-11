@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shopping Cart - EQ Clothing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f8f8;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    nav {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+    nav a:hover {
+      background: #555;
+    }
+    main {
+      max-width: 1000px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 15px;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      font-size: 16px;
+      text-align: center;
+    }
+    .remove-btn {
+      background-color: #ff4444;
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .remove-btn:hover {
+      background-color: #cc0000;
+    }
+    .total {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 30px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>EQ Clothing</header>
+
+<nav>
+  <a href="clothing.html">Home</a>
+  <a href="western.html">Western</a>
+  <a href="eastern.html">Eastern</a>
+  <a href="tops.html">Tops</a>
+  <a href="bottom.html">Bottoms</a>
+  <a href="accesories.html">Accessories</a>
+  <a href="cart.html">Cart</a>
+</nav>
+
+<main>
+  <h2>Your Shopping Cart</h2>
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Cart items inserted here dynamically -->
+    </tbody>
+  </table>
+  <div class="total" id="total-price">Total: $0.00</div>
+</main>
+
+<footer>
+  &copy; 2025 EQ Clothing. Designed by Esha Qayyum
+</footer>
+
+<script>
+  // Sample cart data - in real app, use localStorage or backend
+  let cart = [
+    { name: "Elegant Earrings", price: 29.99, qty: 1 },
+    { name: "Gold Rings", price: 39.99, qty: 2 },
+  ];
+
+  const tbody = document.querySelector("#cart-table tbody");
+  const totalPriceEl = document.getElementById("total-price");
+
+  function renderCart() {
+    tbody.innerHTML = "";
+    let total = 0;
+    cart.forEach((item, index) => {
+      const subtotal = item.price * item.qty;
+      total += subtotal;
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${item.name}</td>
+        <td>$${item.price.toFixed(2)}</td>
+        <td><input type="number" min="1" value="${item.qty}" data-index="${index}"></td>
+        <td>$${subtotal.toFixed(2)}</td>
+        <td><button class="remove-btn" data-index="${index}">X</button></td>
+      `;
+      tbody.appendChild(tr);
+    });
+    totalPriceEl.textContent = `Total: $${total.toFixed(2)}`;
+
+    // Add event listeners for quantity inputs
+    tbody.querySelectorAll('input[type="number"]').forEach(input => {
+      input.addEventListener('change', e => {
+        const idx = e.target.dataset.index;
+        let val = parseInt(e.target.value);
+        if (isNaN(val) || val < 1) {
+          val = 1;
+          e.target.value = 1;
+        }
+        cart[idx].qty = val;
+        renderCart();
+      });
+    });
+
+    // Add event listeners for remove buttons
+    tbody.querySelectorAll('.remove-btn').forEach(button => {
+      button.addEventListener('click', e => {
+        const idx = e.target.dataset.index;
+        cart.splice(idx, 1);
+        renderCart();
+      });
+    });
+  }
+
+  renderCart();
+</script>
+
+</body>
+</html>

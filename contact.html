@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - EQ Clothing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f8f8;
+    }
+    header {
+      background: #222;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    nav {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+    nav a:hover {
+      background: #555;
+    }
+    .container {
+      max-width: 600px;
+      background: white;
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #222;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      resize: vertical;
+    }
+    textarea {
+      height: 120px;
+    }
+    button {
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #e65c00;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>EQ Clothing</header>
+
+<nav>
+   <a href="clothing.html">Home</a>
+  <a href="western.html">Western</a>
+  <a href="eastern.html">Eastern</a>
+  <a href="tops.html">Tops</a>
+  <a href="bottom.html">Bottoms</a>
+  <a href="accesories.html">Accessories</a>
+  <a href="cart.html">Cart</a>
+  <a href="contact.html">Contact Us</a>
+</nav>
+
+<div class="container">
+  <h2>Contact Us</h2>
+  <form id="contactForm">
+    <label for="name">Name *</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="subject">Subject *</label>
+    <input type="text" id="subject" name="subject" required />
+
+    <label for="message">Message *</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</div>
+
+<footer>
+  EQ-Wear, GT Road, Lahore | Contact: 000-111-222-333 | Email: EQwear@gmail.com<br />
+  Designed by Esha Qayyum
+</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you for your message. We will get back to you soon!');
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
